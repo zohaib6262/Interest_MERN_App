@@ -1,0 +1,14 @@
+.background {
+  background-image: linear-gradient(
+      rgba(25, 23, 23, 0.79),
+      rgba(0, 0, 0, 0.927)
+    ),
+    url("../../../assets/coder.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  min-height: 90vh;
+}
+.formBackground {
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
+}
