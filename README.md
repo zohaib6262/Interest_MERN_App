@@ -14,9 +14,7 @@ This project is a full-stack application built using the MERN (MongoDB, Express,
 1. **Clone the repository:**
 
    ```bash
-   git clone https://github.com/zohaib6262/zohaib
-
-   ```
+   git clone https://github.com/zohaib6262/Interest_MERN_App.git
 
 2. **Navigate to the frontend directory:**
 
