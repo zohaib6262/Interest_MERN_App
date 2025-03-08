@@ -14,13 +14,16 @@ function InterestRateTableCalculation() {
     }
     const fetchData = async () => {
       try {
-        const response = await fetch("http://localhost:5500/authinterestRate", {
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: localStorage.getItem("token"),
-          },
-        });
+        const response = await fetch(
+          "https://interest-app-backend.vercel.app/authinterestRate",
+          {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: localStorage.getItem("token"),
+            },
+          }
+        );
         const res = await response.json();
         if (response.ok) {
           const userId = localStorage.getItem("id");

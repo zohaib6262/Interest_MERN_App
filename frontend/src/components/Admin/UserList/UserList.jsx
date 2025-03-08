@@ -14,14 +14,17 @@ const UserList = () => {
   const deleteUser = async (id) => {
     const previousUsers = [...users];
     try {
-      const response = await fetch("http://localhost:5500/delete-user", {
-        method: "DELETE",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: localStorage.getItem("adminToken"),
-        },
-        body: JSON.stringify({ id }),
-      });
+      const response = await fetch(
+        "https://interest-app-backend.vercel.app/delete-user",
+        {
+          method: "DELETE",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: localStorage.getItem("adminToken"),
+          },
+          body: JSON.stringify({ id }),
+        }
+      );
       const res = await response.json();
       if (!response.ok) {
         const resError = res.msg || "Failed to delete user!";

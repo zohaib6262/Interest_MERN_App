@@ -31,11 +31,14 @@ const LoginForm = () => {
 
     try {
       setIsSubmitting(true);
-      const response = await fetch("http://localhost:5500/authlogin", {
-        method: "POST",
-        body: JSON.stringify(loginData),
-        headers: { "Content-Type": "application/json" },
-      });
+      const response = await fetch(
+        "https://interest-app-backend.vercel.app/authlogin",
+        {
+          method: "POST",
+          body: JSON.stringify(loginData),
+          headers: { "Content-Type": "application/json" },
+        }
+      );
 
       setIsSubmitting(false);
       const res = await response.json();

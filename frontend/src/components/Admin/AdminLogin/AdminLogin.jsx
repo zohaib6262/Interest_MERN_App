@@ -31,11 +31,14 @@ const AdminLogin = () => {
 
     try {
       setIsSubmitting(true);
-      const response = await fetch("http://localhost:5500/authadminlogin", {
-        method: "POST",
-        body: JSON.stringify(loginData),
-        headers: { "Content-Type": "application/json" },
-      });
+      const response = await fetch(
+        "https://interest-app-backend.vercel.app/authadminlogin",
+        {
+          method: "POST",
+          body: JSON.stringify(loginData),
+          headers: { "Content-Type": "application/json" },
+        }
+      );
       console.log(response);
 
       setIsSubmitting(false);

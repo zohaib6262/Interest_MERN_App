@@ -48,7 +48,7 @@ const InterestRate = ({ isLogin }) => {
     try {
       setIsSubmitting(true);
       const response = await fetch(
-        "http://localhost:5500/calculateInterestRate",
+        "https://interest-app-backend.vercel.app/calculateInterestRate",
         {
           method: "POST",
           body: JSON.stringify({
