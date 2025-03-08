@@ -15,7 +15,7 @@ function InterestRateTableCalculation() {
     const fetchData = async () => {
       try {
         const response = await fetch(
-          "https://interest-app-backend.vercel.app/authinterestRate",
+          "https://interest-mern-app-backend.vercel.app/authinterestRate",
           {
             method: "GET",
             headers: {

@@ -32,7 +32,7 @@ const AdminLogin = () => {
     try {
       setIsSubmitting(true);
       const response = await fetch(
-        "https://interest-app-backend.vercel.app/authadminlogin",
+        "https://interest-mern-app-backend.vercel.app/authadminlogin",
         {
           method: "POST",
           body: JSON.stringify(loginData),

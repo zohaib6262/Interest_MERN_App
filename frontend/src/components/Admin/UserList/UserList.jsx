@@ -15,7 +15,7 @@ const UserList = () => {
     const previousUsers = [...users];
     try {
       const response = await fetch(
-        "https://interest-app-backend-zohaib6262-zohaib6262s-projects.vercel.app/delete-user",
+        "https://interest-mern-app-backend.vercel.app/delete-user",
         {
           method: "DELETE",
           headers: {
