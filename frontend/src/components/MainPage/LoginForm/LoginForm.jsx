@@ -35,7 +35,9 @@ const LoginForm = () => {
         {
           method: "GET",
           body: JSON.stringify(loginData),
-          headers: { "Content-Type": "application/json" },
+          headers: {
+            "Content-Type": "application/json",
+          },
         }
       );
 
