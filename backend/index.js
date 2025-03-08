@@ -14,7 +14,11 @@ mongoose.connect(
 );
 app.use(
   cors({
-    origin: ["http://localhost:5173", "*"],
+    origin: [
+      "http://localhost:5173",
+      "https://interest-mern-app-backend.vercel.app",
+      "*",
+    ],
     methods: ["GET", "POST", "DELETE"],
     allowedHeaders: ["Content-Type", "Authorization"],
   })
