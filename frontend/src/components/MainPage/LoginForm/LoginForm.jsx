@@ -11,7 +11,7 @@ const LoginForm = () => {
   const { addToken, changeUserLoginHandle } = useContext(ContextProvider);
 
   const onChangeHandler = (identifier, value) => {
-    setLoginData({ ...loginData, [identifier]: value });
+    setLoginData({ ...loginData, [identifier]: value.trim() });
   };
 
   const handleSubmit = async (event) => {
@@ -28,9 +28,8 @@ const LoginForm = () => {
       });
       return;
     }
-
+    setIsSubmitting(true);
     try {
-      setIsSubmitting(true);
       const response = await fetch(
         "https://interest-mern-app-backend.vercel.app/authlogin",
         {
@@ -54,16 +53,19 @@ const LoginForm = () => {
           addToken(res.token);
           navigate("interestrate");
         }, 500);
-        // setIsToken(res.token);
+        // setIsToken(res.token);return;
+        return;
       } else {
         const errorData = res.msg || "Login failed. Please try again.";
         toast.error(errorData, { theme: "dark" });
+        return;
       }
     } catch (err) {
       setIsSubmitting(false);
       toast.error("An error occurred. Please try again later.", {
         theme: "dark",
       });
+      return;
     }
   };
 
