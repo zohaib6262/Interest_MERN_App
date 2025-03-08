@@ -48,14 +48,21 @@ const SignupForm = () => {
       if (response.ok) {
         toast.success("Signup successful!", { theme: "dark", autoClose: 2000 });
         setTimeout(() => changeUserLoginHandle(true), 2000);
+        setIsSubmitting(false);
+
+        return;
       } else {
         toast.error("Signup failed. Please try again.", { theme: "dark" });
+        setIsSubmitting(false);
+
+        return;
       }
     } catch (err) {
       setIsSubmitting(false);
       toast.error("An error occurred. Please try again later.", {
         theme: "dark",
       });
+      return;
     }
   };
 
