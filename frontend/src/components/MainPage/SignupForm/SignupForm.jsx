@@ -37,7 +37,7 @@ const SignupForm = () => {
     setIsSubmitting(true);
     try {
       const response = await fetch(
-        "https://interest-app-backend.vercel.app/authsignup",
+        "https://interest-app-backend-zohaib6262-zohaib6262s-projects.vercel.app/authsignup",
         {
           method: "POST",
           body: JSON.stringify(signupData),
