@@ -34,7 +34,7 @@ const LoginForm = () => {
       const response = await fetch(
         "https://interest-mern-app-backend.vercel.app/authlogin",
         {
-          method: "POST",
+          method: "GET",
           body: JSON.stringify(loginData),
           headers: { "Content-Type": "application/json" },
         }
@@ -46,14 +46,14 @@ const LoginForm = () => {
       if (response.ok) {
         toast.success("Login successful!", {
           theme: "dark",
-          autoClose: 1000,
+          autoClose: 600,
         });
         setTimeout(() => {
           localStorage.setItem("token", res.token);
           localStorage.setItem("id", res.id);
           addToken(res.token);
           navigate("interestrate");
-        }, 1000);
+        }, 500);
         // setIsToken(res.token);
       } else {
         const errorData = res.msg || "Login failed. Please try again.";
