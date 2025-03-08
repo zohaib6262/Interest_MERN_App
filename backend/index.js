@@ -17,6 +17,7 @@ app.use(
     origin: [
       "http://localhost:5173",
       "https://mern-interest-track-app.vercel.app/",
+      "https://interest-mern-app-backend.vercel.app/",
       "*",
     ],
     methods: ["GET", "POST", "DELETE"],
