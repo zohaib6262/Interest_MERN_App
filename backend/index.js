@@ -9,21 +9,22 @@ const app = express();
 const port = 3000;
 const jwtPassword = "zohaib123";
 const jwtPasswordAdmin = "zohaib259";
-mongoose.connect(
-  "mongodb+srv://admin:zohaib259@cluster0.qshup.mongodb.net/user_app"
-);
+
+mongoose
+  .connect("mongodb+srv://admin:zohaib259@cluster0.qshup.mongodb.net/user_app")
+  .then(() => {
+    console.log("MongoDB connection successful");
+  })
+  .catch((err) => {
+    console.error("MongoDB connection error:", err);
+  });
 app.use(
   cors({
-    origin: [
-      "http://localhost:5173",
-      "https://mern-interest-track-app.vercel.app/",
-      "https://interest-mern-app-backend.vercel.app/",
-      "*",
-    ],
+    origin: ["https://mern-interest-track-app.vercel.app", "*"],
     methods: ["GET", "POST", "DELETE"],
-    allowedHeaders: ["Content-Type", "Authorization"],
   })
 );
+
 // Middleware to parse JSON and handle CORS
 app.use(express.json());
 // app.use(cors());

@@ -44,13 +44,6 @@ const SignupForm = () => {
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify({
-            name: "John",
-            username: "john123",
-            password: "password123",
-            tel: "123456789",
-            gender: "Male",
-          }),
         }
       );
       setIsSubmitting(false);
