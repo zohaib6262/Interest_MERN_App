@@ -1,24 +1,24 @@
-.services-section {
-  background: linear-gradient(135deg, #2e2e2e, #1c1c1c);
+.servicesSection {
+  background: linear-gradient(135deg, #3c3c3c, #343434);
   color: white;
   padding: 60px 0;
 }
 
-.section-title {
+.sectionTitle {
   font-size: 2.5rem;
   font-weight: bold;
 }
 
-.section-subtitle {
+.sectionSubtitle {
   font-size: 1.2rem;
   margin-bottom: 40px;
 }
 
-.carousel-container {
+.carouselContainer {
   padding: 20px;
 }
 
-.service-card {
+.serviceCard {
   background: #fff;
   border-radius: 12px;
   margin: 10px;
@@ -26,29 +26,29 @@
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.service-card:hover {
+.serviceCard:hover {
   transform: translateY(-5px);
   box-shadow: 0 10px 20px rgba(255, 193, 7, 0.3);
 }
 
-.service-icon {
+.serviceIcon {
   color: #ffc107;
   margin-bottom: 15px;
 }
 
-.service-title {
+.serviceTitle {
   font-size: 1.3rem;
   font-weight: bold;
 }
 
-.service-description {
+.serviceDescription {
   color: #444;
   font-size: 1rem;
 }
 
-.custom-btn {
+.customBtn {
   background: #ffc107;
-  color: #000;
+  color: #f1f1f1;
   border: none;
   padding: 10px 20px;
   font-weight: bold;
@@ -56,13 +56,13 @@
   transition: background 0.3s ease;
 }
 
-.custom-btn:hover {
+.customBtn:hover {
   background: #ffb300;
 }
 
-.custom-btn-lg {
+.customBtnLg {
   background: #ffc107;
-  color: #000;
+  color: #ffffff;
   border: none;
   padding: 15px 30px;
   font-weight: bold;
@@ -70,6 +70,6 @@
   transition: 0.3s ease;
 }
 
-.custom-btn-lg:hover {
+.customBtnLg:hover {
   background: #ffb300;
 }

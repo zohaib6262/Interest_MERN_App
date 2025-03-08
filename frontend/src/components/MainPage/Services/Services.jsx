@@ -10,7 +10,7 @@ import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-import "./Services.css"; // Custom styles for better UI
+import classes from "./Services.module.css"; // Import the styles as a module
 
 const Services = () => {
   const navigate = useNavigate();
@@ -57,9 +57,9 @@ const Services = () => {
   ];
 
   return (
-    <Container fluid className="services-section">
-      <h2 className="text-center section-title">Our Services</h2>
-      <p className="text-center section-subtitle">
+    <Container fluid className={classes.servicesSection}>
+      <h2 className={`text-center ${classes.sectionTitle}`}>Our Services</h2>
+      <p className={`text-center ${classes.sectionSubtitle}`}>
         Empowering Your Financial Decisions
       </p>
 
@@ -68,19 +68,21 @@ const Services = () => {
         infinite
         autoPlay
         autoPlaySpeed={3000}
-        containerClass="carousel-container"
+        containerClass={classes.carouselContainer}
       >
         {services.map((service, index) => (
-          <Card key={index} className="service-card shadow">
+          <Card key={index} className={`${classes.serviceCard} shadow`}>
             <Card.Body className="text-center">
-              <div className="service-icon">{service.icon}</div>
-              <Card.Title className="service-title">{service.title}</Card.Title>
-              <Card.Text className="service-description">
+              <div className={classes.serviceIcon}>{service.icon}</div>
+              <Card.Title className={classes.serviceTitle}>
+                {service.title}
+              </Card.Title>
+              <Card.Text className={classes.serviceDescription}>
                 {service.description}
               </Card.Text>
               <Button
                 variant="warning"
-                className="custom-btn"
+                className={`${classes.customBtn} text-white`}
                 href={service.link}
               >
                 Learn More
@@ -94,7 +96,7 @@ const Services = () => {
         <h3>Ready to take control of your finances?</h3>
         <Button
           variant="warning"
-          className="custom-btn-lg"
+          className={`${classes.customBtnLg} text-white`}
           size="lg"
           onClick={() => {
             if (localStorage?.getItem("token")) {
