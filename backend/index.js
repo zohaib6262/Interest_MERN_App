@@ -56,7 +56,7 @@ app.post("/authsignup", async (req, res) => {
   }
 });
 
-app.get("/authlogin", async (req, res) => {
+app.post("/authlogin", async (req, res) => {
   try {
     // Find user by username
     const existingUser = await Users.findOne({ username: req.body.username });

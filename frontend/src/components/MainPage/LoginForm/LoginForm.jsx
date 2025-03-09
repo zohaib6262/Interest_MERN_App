@@ -10,26 +10,17 @@ const LoginForm = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const { addToken, changeUserLoginHandle } = useContext(ContextProvider);
 
-  // Handle changes to form fields
   const onChangeHandler = (identifier, value) => {
     setLoginData({ ...loginData, [identifier]: value.trim() });
   };
 
-  // Handle form submission
   const handleSubmit = async (event) => {
     event.preventDefault(); // Prevent form from reloading the page
 
-    // Username validation (email pattern)
-    const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-    if (!emailPattern.test(loginData.username)) {
-      toast.error("Enter a valid email address", {
-        theme: "dark",
-        autoClose: 1000,
-      });
+    if (loginData.username.trim() === "") {
+      toast.error("Enter a valid username", { theme: "dark", autoClose: 1000 });
       return;
     }
-
-    // Password validation (minimum 6 characters)
     if (loginData.password.length < 6) {
       toast.error("Password must be greater than or equal to 6 characters", {
         theme: "dark",
@@ -37,14 +28,12 @@ const LoginForm = () => {
       });
       return;
     }
-
-    setIsSubmitting(true); // Start submitting state
-
+    setIsSubmitting(true);
     try {
       const response = await fetch(
         "https://interest-mern-app-backend.vercel.app/authlogin",
         {
-          method: "GET",
+          method: "POST",
           body: JSON.stringify(loginData),
           headers: {
             "Content-Type": "application/json",
@@ -52,29 +41,29 @@ const LoginForm = () => {
         }
       );
 
-      setIsSubmitting(false); // End submitting state
+      setIsSubmitting(false);
       const res = await response.json();
 
       if (response.ok) {
-        toast.success("Login successful!", { theme: "dark", autoClose: 600 });
-
-        // Save token and id to localStorage
+        toast.success("Login successful!", {
+          theme: "dark",
+          autoClose: 600,
+        });
         setTimeout(() => {
           localStorage.setItem("token", res.token);
           localStorage.setItem("id", res.id);
           addToken(res.token);
-          navigate("interestrate"); // Navigate to 'interestrate' page
+          navigate("interestrate");
         }, 500);
+        // setIsToken(res.token);return;
         return;
       } else {
-        // Show error if login fails
-        const errorData =
-          res.msg || res.error || "Login failed. Please try again.";
+        const errorData = res.msg || "Login failed. Please try again.";
         toast.error(errorData, { theme: "dark" });
         return;
       }
     } catch (err) {
-      setIsSubmitting(false); // End submitting state
+      setIsSubmitting(false);
       toast.error("An error occurred. Please try again later.", {
         theme: "dark",
       });
@@ -84,59 +73,45 @@ const LoginForm = () => {
 
   return (
     <>
-      <Container className="d-flex justify-content-center align-items-center min-vh-100">
-        <Row className="w-100">
-          <Col md={6} lg={4}>
-            <h2 className="mb-4 text-center text-white">Login</h2>
-            <Form onSubmit={handleSubmit}>
-              {/* Username Field */}
-              <Form.Group className="mb-3" controlId="formUsername">
-                <Form.Label className="text-white">Username (Email)</Form.Label>
-                <Form.Control
-                  type="text"
-                  placeholder="Enter your username (email)"
-                  value={loginData.username}
-                  onChange={(e) => onChangeHandler("username", e.target.value)}
-                  aria-label="Username"
-                />
-              </Form.Group>
+      <h2 className="mb-4 text-center text-white">Login</h2>
+      <Form onSubmit={handleSubmit}>
+        {/* Username Field */}
+        <Form.Group className="mb-3" controlId="formUsername">
+          <Form.Label className="text-white">Username</Form.Label>
+          <Form.Control
+            type="text"
+            placeholder="Enter your username"
+            value={loginData.username}
+            onChange={(e) => onChangeHandler("username", e.target.value)}
+          />
+        </Form.Group>
 
-              {/* Password Field */}
-              <Form.Group className="mb-3" controlId="formPassword">
-                <Form.Label className="text-white">Password</Form.Label>
-                <Form.Control
-                  type="password"
-                  placeholder="Enter your password"
-                  value={loginData.password}
-                  onChange={(e) => onChangeHandler("password", e.target.value)}
-                  aria-label="Password"
-                />
-              </Form.Group>
+        {/* Password Field */}
+        <Form.Group className="mb-3" controlId="formPassword">
+          <Form.Label className="text-white">Password</Form.Label>
+          <Form.Control
+            type="password"
+            placeholder="Enter your password"
+            value={loginData.password}
+            onChange={(e) => onChangeHandler("password", e.target.value)}
+          />
+        </Form.Group>
 
-              {/* Submit Button */}
-              <Button
-                variant="primary"
-                type="submit"
-                className="w-100 my-4"
-                disabled={isSubmitting}
-              >
-                {isSubmitting ? "Logging in..." : "Login"}
-              </Button>
+        {/* Submit Button */}
+        <Button variant="primary" type="submit" className="w-100 my-4">
+          {isSubmitting ? "Logging in..." : "Login"}
+        </Button>
 
-              {/* Signup Redirect */}
-              <h6 className="text-center text-white">
-                Don't have an account?{" "}
-                <Button
-                  className="text-primary border-0 bg-transparent text-decoration-underline"
-                  onClick={() => changeUserLoginHandle(false)}
-                >
-                  Sign up
-                </Button>
-              </h6>
-            </Form>
-          </Col>
-        </Row>
-      </Container>
+        <h6 className="text-center text-white">
+          Don't have an account?{" "}
+          <Button
+            className="text-primary border-0 bg-transparent text-decoration-underline"
+            onClick={() => changeUserLoginHandle(false)}
+          >
+            Sign up
+          </Button>
+        </h6>
+      </Form>
 
       <ToastContainer />
     </>
