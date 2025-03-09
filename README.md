@@ -6,6 +6,8 @@ Interest_MERN_APP
 
 This project is a full-stack application built using the MERN (MongoDB, Express, React, Node.js) stack. It allows users to register, log in, and manage their accounts seamlessly. Additionally, it includes an admin route (`/admin`) that provides features for managing user accounts. To access the admin UI, navigate to the root route followed by `/admin`.
 
+You can also check out the live version of this project at: [Live Demo](https://mern-interest-track-app.vercel.app/)
+
 
 ## Installation
 
@@ -32,3 +34,4 @@ This project is a full-stack application built using the MERN (MongoDB, Express,
    ### The command for run the backtend code on locally.
    npx nodemon index.js
    ```
+
