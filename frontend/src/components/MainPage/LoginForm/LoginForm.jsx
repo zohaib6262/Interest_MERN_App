@@ -41,11 +41,10 @@ const LoginForm = () => {
     setIsSubmitting(true); // Start submitting state
 
     try {
-      // Sending POST request to backend for login
       const response = await fetch(
         "https://interest-mern-app-backend.vercel.app/authlogin",
         {
-          method: "POST", // Changed from GET to POST
+          method: "GET",
           body: JSON.stringify(loginData),
           headers: {
             "Content-Type": "application/json",
